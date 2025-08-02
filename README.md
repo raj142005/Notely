@@ -13,7 +13,7 @@ npm install
 #Start the App
 npm start
 
-# What we do ?
+# What do we do?
 
-Notely allows you to make a notes , add tasks , set reminders and collabrate with your team on chat, We will soon add add project management feature soon that  will help you to manage all your needs on one single interface.
+Notely allows you to make notes, add tasks, set reminders, and collaborate with your team on chat. We will soon add a project management feature that will help you manage all your needs on a single interface.
 
