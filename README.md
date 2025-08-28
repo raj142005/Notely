@@ -18,4 +18,4 @@ npm start
 Notely allows you to make notes, add tasks, set reminders,and collaborate with your team on chat.We will soon add a project management feature that will help you manage all your needs on a single interface.
 
 # Deadline and Deliverables
-I plan to deliver a fully functional website by 16 August 2025 , which is just 5 days from today. The features will be Notes , Add Tasks , Reminders.
+I plan to deliver a fully functional website by 5th September 2025, which is just 5 days from today. The features will be Notes , Add Tasks , Reminders.
