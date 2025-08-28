@@ -4,17 +4,55 @@ export default function Tasks(){
 
     const[tasks,setTasks] = useState([]);
 
-    const addTasks = () => {
-        const newTasks = {
-            title:"New Tasks",
-            description:"This is a new Tasks",
-            priority_tags:"High",
-            date:new Date().toLocaleDateString(),
-            work_tag:"Work"
-        };
+    const[showForm , setShowForm] = useState(false);
 
-        setTasks([...tasks,newTasks]);
-    };
+    const[formData , setFormData] = useState({
+        title : "",
+        description : "",
+        priority_tags : "",
+        date : "",
+        work_tag : "",
+    });
+
+
+ 
+
+    const handleInput = (e) => {
+        const { name , value } = e.target;
+        setFormData(prev => ({...prev , [name]:value}));
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(!formData.title){
+            alert("Title Task is Required");
+            return;
+        }
+
+        const newTask = {...formData , id : Date.now};
+        setTasks((prev) =>[...prev , newTask]);
+        setFormData({
+            title : "",
+            description : "",
+            priority_tags : "",
+            date : "",
+            work_tag : "",
+        });
+        setShowForm(false);
+    }
+
+    const handleCancel = () => {
+
+        setFormData({
+            title : "",
+            description : "",
+            priority_tags : "",
+            date : "",
+            work_tag : "",
+        });
+
+        setShowForm(false);
+    }
 
     return(
         <>
@@ -37,7 +75,7 @@ export default function Tasks(){
                             <div className='border-2 border-black p-4  rounded-lg bg-blue-100 w-36 h-10 flex items-center justify-center'>Active ()</div>
                             <div className='border-2 border-black p-4  rounded-lg bg-blue-100 w-36 h-10 flex items-center justify-center'>Completed ()</div>
                         </div>
-                        <button onClick={addTasks} 
+                        <button onClick={() => setShowForm(true)} 
                             className='bg-black rounded-lg text-white px-5 py-2'>+ Add New Tasks</button>
                     </div>
 
@@ -46,6 +84,15 @@ export default function Tasks(){
                         <TaskCard key={index} {...tasks}></TaskCard>
                     ))}
                 </div>
+
+                {showForm && (
+                    <Form 
+                        formData={formData}
+                        handleInput={handleInput}
+                        handleSubmit={handleSubmit}
+                        handleCancel={handleCancel}
+                    />
+                )}
 
             </div>
         </>
@@ -78,6 +125,33 @@ function TaskCard({title,description,priority_tags,date,work_tag}){
                         <h1>{date}</h1>
                         <div>{work_tag}</div>
                     </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+function Form({formData , handleInput , handleSubmit , handleCancel}){
+    return(
+        <>
+            <div className="fixed inset-0 flex items-center justify-center z-50">
+                <div className="absolute inset-0 bg-black/50" onClick={handleCancel}></div>
+                <div className="bg-white rounded-lg p-6 w-96 z-10">
+                    <form onSubmit={handleSubmit}>
+                        <h1>Task</h1>
+                        <input name="title" value={formData.title} onChange={handleInput}/>
+                        <h1>Task Description</h1>
+                        <input name="description" value={formData.description} onChange={handleInput}/>
+                        <h1>Select Priority</h1>
+                        <label name="priority_tag"></label>
+                        <select id="priority" value={formData.priority_tags} onChange={handleInput}>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                        <button type="submit">+ Add</button>
+                        <button type="button" onClick={handleCancel}>Cancel</button>
+                    </form>
                 </div>
             </div>
         </>
