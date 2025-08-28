@@ -5,7 +5,7 @@ function Notes(){
     const [notetext,setNotetext] = useState("");
 
     const addNote = () => {
-        if(notetext.trim() =="") return;
+        if(notetext.trim() === "") return;
 
         const lines = notetext.split("\n");
 
@@ -82,7 +82,7 @@ function Notes(){
     );
 }
 
- function NoteDisplayCard({title, description , date }){
+function NoteDisplayCard({title, description , date }){
     return(
         <>
             <div className='flex flex-col w-full h-72 p-4 rounded-lg cursor-pointer shadow-md bg-red-100 hover:scale-105 transition-transform'>

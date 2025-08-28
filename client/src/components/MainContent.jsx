@@ -5,7 +5,7 @@ function MainContent(){
     return (
         <div className='h-screen'>
             <div className='flex flex-col text-center m-10'>
-                <span className='text-6xl font-extrabold mb-4'>Welcome to <a className='bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent'>CollabNote</a></span>
+                <span className='text-6xl font-extrabold mb-4'>Welcome to <a className='bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent'>Notely</a></span>
                 <span className='break-all p-3 text-xl'>Your intelligent collaborative workspace where ideas flourish, 
                     tasks get done, and teams stay <br/>connected. 
                     Experience seamless productivity with elegant simplicity.</span>
